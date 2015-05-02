@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F9102C2B-1F76-4688-8A98-127A6BF3B524</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9EA801AE86C9B35BF01ED4EEFE31262E520E6550</key>
+		<string>https://github.com/twenty3/Fling-Swift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Fling Swift.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9EA801AE86C9B35BF01ED4EEFE31262E520E6550</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/twenty3/Fling-Swift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9EA801AE86C9B35BF01ED4EEFE31262E520E6550</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9EA801AE86C9B35BF01ED4EEFE31262E520E6550</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Fling%20Swift</string>
+		</dict>
+	</array>
+</dict>
+</plist>
