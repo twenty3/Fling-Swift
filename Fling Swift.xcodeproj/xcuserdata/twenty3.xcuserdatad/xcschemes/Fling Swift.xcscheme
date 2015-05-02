@@ -42,16 +42,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0134C7081AF53D1E00B4B1D5"
-               BuildableName = "Fling SwiftTests.xctest"
-               BlueprintName = "Fling SwiftTests"
-               ReferencedContainer = "container:Fling Swift.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

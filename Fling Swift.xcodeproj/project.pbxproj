@@ -12,18 +12,7 @@
 		0134C6FF1AF53D1E00B4B1D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0134C6FD1AF53D1E00B4B1D5 /* Main.storyboard */; };
 		0134C7011AF53D1E00B4B1D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0134C7001AF53D1E00B4B1D5 /* Images.xcassets */; };
 		0134C7041AF53D1E00B4B1D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0134C7021AF53D1E00B4B1D5 /* LaunchScreen.xib */; };
-		0134C7101AF53D1E00B4B1D5 /* Fling_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134C70F1AF53D1E00B4B1D5 /* Fling_SwiftTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0134C70A1AF53D1E00B4B1D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0134C6EC1AF53D1E00B4B1D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0134C6F31AF53D1E00B4B1D5;
-			remoteInfo = "Fling Swift";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0134C6F41AF53D1E00B4B1D5 /* Fling Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fling Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,20 +22,10 @@
 		0134C6FE1AF53D1E00B4B1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0134C7001AF53D1E00B4B1D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0134C7031AF53D1E00B4B1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0134C7091AF53D1E00B4B1D5 /* Fling SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fling SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0134C70E1AF53D1E00B4B1D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0134C70F1AF53D1E00B4B1D5 /* Fling_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fling_SwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0134C6F11AF53D1E00B4B1D5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0134C7061AF53D1E00B4B1D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				0134C6F61AF53D1E00B4B1D5 /* Fling Swift */,
-				0134C70C1AF53D1E00B4B1D5 /* Fling SwiftTests */,
 				0134C6F51AF53D1E00B4B1D5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				0134C6F41AF53D1E00B4B1D5 /* Fling Swift.app */,
-				0134C7091AF53D1E00B4B1D5 /* Fling SwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,23 +72,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0134C70C1AF53D1E00B4B1D5 /* Fling SwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				0134C70F1AF53D1E00B4B1D5 /* Fling_SwiftTests.swift */,
-				0134C70D1AF53D1E00B4B1D5 /* Supporting Files */,
-			);
-			path = "Fling SwiftTests";
-			sourceTree = "<group>";
-		};
-		0134C70D1AF53D1E00B4B1D5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0134C70E1AF53D1E00B4B1D5 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,24 +92,6 @@
 			productReference = 0134C6F41AF53D1E00B4B1D5 /* Fling Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0134C7081AF53D1E00B4B1D5 /* Fling SwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0134C7161AF53D1E00B4B1D5 /* Build configuration list for PBXNativeTarget "Fling SwiftTests" */;
-			buildPhases = (
-				0134C7051AF53D1E00B4B1D5 /* Sources */,
-				0134C7061AF53D1E00B4B1D5 /* Frameworks */,
-				0134C7071AF53D1E00B4B1D5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0134C70B1AF53D1E00B4B1D5 /* PBXTargetDependency */,
-			);
-			name = "Fling SwiftTests";
-			productName = "Fling SwiftTests";
-			productReference = 0134C7091AF53D1E00B4B1D5 /* Fling SwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +103,6 @@
 				TargetAttributes = {
 					0134C6F31AF53D1E00B4B1D5 = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					0134C7081AF53D1E00B4B1D5 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 0134C6F31AF53D1E00B4B1D5;
 					};
 				};
 			};
@@ -182,7 +120,6 @@
 			projectRoot = "";
 			targets = (
 				0134C6F31AF53D1E00B4B1D5 /* Fling Swift */,
-				0134C7081AF53D1E00B4B1D5 /* Fling SwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +135,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0134C7071AF53D1E00B4B1D5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -217,23 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0134C7051AF53D1E00B4B1D5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0134C7101AF53D1E00B4B1D5 /* Fling_SwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0134C70B1AF53D1E00B4B1D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0134C6F31AF53D1E00B4B1D5 /* Fling Swift */;
-			targetProxy = 0134C70A1AF53D1E00B4B1D5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0134C6FD1AF53D1E00B4B1D5 /* Main.storyboard */ = {
@@ -358,40 +272,6 @@
 			};
 			name = Release;
 		};
-		0134C7171AF53D1E00B4B1D5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Fling SwiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fling Swift.app/Fling Swift";
-			};
-			name = Debug;
-		};
-		0134C7181AF53D1E00B4B1D5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Fling SwiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fling Swift.app/Fling Swift";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,14 +289,6 @@
 			buildConfigurations = (
 				0134C7141AF53D1E00B4B1D5 /* Debug */,
 				0134C7151AF53D1E00B4B1D5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		0134C7161AF53D1E00B4B1D5 /* Build configuration list for PBXNativeTarget "Fling SwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0134C7171AF53D1E00B4B1D5 /* Debug */,
-				0134C7181AF53D1E00B4B1D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
