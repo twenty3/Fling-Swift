@@ -171,6 +171,22 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
             self.animator.addBehavior(self.dragAttachmentBehavior)
         }
         else if panRecognizer.state == UIGestureRecognizerState.Ended {
+            // apply the velocity of the pan so we can 'fling' the item
+            // NOTE:
+            //    velocity of the pan isn't always exactly zero when we
+            //    might expect it to be. To work around that we'll only
+            //    add the velocity if it's magnitude was large enough
+            
+            let tokenBeingDragged = panRecognizer.view as! TokenView
+            let velocity = panRecognizer.velocityInView(self.view)
+            
+            let magnitude = sqrt( (velocity.x * velocity.x) + (velocity.y * velocity.y) );
+            println("Pan ended with velocity: \(velocity)  magnitdue: \(magnitude)")
+            
+            if magnitude > 100.0 {
+                tokenBeingDragged.dynamicBehavior.addLinearVelocity(velocity, forItem:tokenBeingDragged)
+            }
+            
             self.dragStartingPoint = CGPointZero;
             self.animator.removeBehavior(self.dragAttachmentBehavior)
             self.dragAttachmentBehavior = nil
