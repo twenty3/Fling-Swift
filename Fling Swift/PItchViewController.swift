@@ -76,6 +76,15 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
         fieldTapRecognizer.numberOfTapsRequired = 2
         fieldTapRecognizer.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(fieldTapRecognizer)
+        
+        // Gesture recognizer to snap the tokens into a formation
+        
+        let longTapRecognizer = UILongPressGestureRecognizer(target: self, action: "fieldLongTapped:")
+        longTapRecognizer.numberOfTouchesRequired = 1
+        longTapRecognizer.numberOfTapsRequired = 0
+        self.view .addGestureRecognizer(longTapRecognizer)
+
+        fieldTapRecognizer.requireGestureRecognizerToFail(longTapRecognizer)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -155,10 +164,46 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
         }
         
         self.transientBehaviors.removeAll(keepCapacity: true)
+        
+        // Re-add the token collisions if we turned them off for a transient behavior
+        if self.tokenCollisionBehavior.dynamicAnimator == nil {
+            self.animator .addBehavior(self.tokenCollisionBehavior)
+        }
     }
     
     //MARK: - Actions
     
+    private func snapTokensToFormation(formation: TokenFormation) {
+        println("MOVING INTO FORMATION")
+        
+        var index = 0
+        for tokenView in self.tokenViews {
+            let snapBehavior = UISnapBehavior(item: tokenView, snapToPoint: formation.locationForTokenAtIndex(index))
+            let damping = 0.5 + CGFloat(rand()) / CGFloat( Double(RAND_MAX) / (1.0 - 0.5) )
+            snapBehavior.damping = damping
+            
+            let maxVelocity = 1000.0
+            let xVelocity = -maxVelocity + ( Double(rand()) / (Double(RAND_MAX) / 2.0 * maxVelocity) )
+            let yVelocity = -maxVelocity + ( Double(rand()) / (Double(RAND_MAX) / 2.0 * maxVelocity) )
+
+            tokenView.dynamicBehavior.addLinearVelocity(CGPoint(x: xVelocity, y: yVelocity), forItem: tokenView)
+            
+            //GOTCHA: adding a snap behavior won't necessarily restart a paused animator.
+            // adding a little velocity does though!
+            
+            let angularVelocity = -100.0 + ( Double(rand()) / ( Double(RAND_MAX) / (100.0 - -100.0) ) )
+            tokenView.dynamicBehavior.addAngularVelocity(CGFloat(angularVelocity), forItem: tokenView)
+            
+            self.animator.addBehavior(snapBehavior)
+            self.transientBehaviors.append(snapBehavior)
+            
+            // Remove the token collisions behavior so they don't interfere with each other
+            self.animator.removeBehavior(self.tokenCollisionBehavior)
+            
+            index++
+        }
+    }
+
     func tokenDidPan(panRecognizer: UIPanGestureRecognizer)
     {
         // We'll only add the attachment for dragging, when a drag starts
@@ -217,6 +262,15 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
     func fieldTapped(recognizer: UITapGestureRecognizer) {
         // Resest the tokens to the bottom
         self.addCollectAtBottomBehaviors()
+    }
+    
+    func fieldLongTapped(recognizer: UIGestureRecognizer) {
+
+        if recognizer.state == UIGestureRecognizerState.Began {
+            // put everyting in a 4 4 2 formation
+            let formation = TokenFormation.formationWithFourFourTwo()
+            self.snapTokensToFormation(formation)
+        }
     }
     
     //MARK: - Debug
