@@ -11,6 +11,7 @@ import UIKit
 class TokenView: UIView {
     
     let TokenViewDiameter = 75.0
+    let dynamicBehavior = UIDynamicItemBehavior()
     
     private var textLabel = UILabel()
     private var primaryColor = UIColor.blackColor()
@@ -46,6 +47,13 @@ class TokenView: UIView {
         tapRecognizer.numberOfTapsRequired = 2
         tapRecognizer.numberOfTouchesRequired = 1
         self.addGestureRecognizer(tapRecognizer)
+        
+        self.dynamicBehavior.addItem(self)
+        self.dynamicBehavior.elasticity = 0.1
+        self.dynamicBehavior.resistance = 7.0
+        self.dynamicBehavior.angularResistance = 1.0
+        self.dynamicBehavior.friction = 1.0
+        self.dynamicBehavior.allowsRotation = true
     }
 
     //MARK: - UIView
