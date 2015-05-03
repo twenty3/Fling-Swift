@@ -13,6 +13,7 @@
 		0134C7041AF53D1E00B4B1D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0134C7021AF53D1E00B4B1D5 /* LaunchScreen.xib */; };
 		0134C71A1AF55E0200B4B1D5 /* PItchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134C7191AF55E0200B4B1D5 /* PItchViewController.swift */; };
 		0134C71C1AF55FC800B4B1D5 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134C71B1AF55FC800B4B1D5 /* TokenView.swift */; };
+		0134C71E1AF5CB6200B4B1D5 /* ReturnToFieldBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134C71D1AF5CB6200B4B1D5 /* ReturnToFieldBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0134C7031AF53D1E00B4B1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0134C7191AF55E0200B4B1D5 /* PItchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PItchViewController.swift; sourceTree = "<group>"; };
 		0134C71B1AF55FC800B4B1D5 /* TokenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		0134C71D1AF5CB6200B4B1D5 /* ReturnToFieldBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnToFieldBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0134C6F91AF53D1E00B4B1D5 /* AppDelegate.swift */,
 				0134C7191AF55E0200B4B1D5 /* PItchViewController.swift */,
 				0134C71B1AF55FC800B4B1D5 /* TokenView.swift */,
+				0134C71D1AF5CB6200B4B1D5 /* ReturnToFieldBehavior.swift */,
 				0134C6FD1AF53D1E00B4B1D5 /* Main.storyboard */,
 				0134C7001AF53D1E00B4B1D5 /* Images.xcassets */,
 				0134C7021AF53D1E00B4B1D5 /* LaunchScreen.xib */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0134C6FA1AF53D1E00B4B1D5 /* AppDelegate.swift in Sources */,
+				0134C71E1AF5CB6200B4B1D5 /* ReturnToFieldBehavior.swift in Sources */,
 				0134C71A1AF55E0200B4B1D5 /* PItchViewController.swift in Sources */,
 				0134C71C1AF55FC800B4B1D5 /* TokenView.swift in Sources */,
 			);

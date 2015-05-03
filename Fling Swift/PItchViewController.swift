@@ -125,6 +125,11 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
     private func addInitialBehaviors() {
         for tokenView in self.tokenViews {
             self.animator.addBehavior(tokenView.dynamicBehavior)
+            // Add a behavior to detect when an item leaves the field to bring it back
+            var snapToPoint = tokenView.center
+            snapToPoint.y = CGRectGetMaxY(self.view.bounds) - CGRectGetMidY(tokenView.bounds) - 4.0;
+            let returnBehavior = ReturnToFieldBehavior(token: tokenView, snapToPoint: snapToPoint)
+            self.animator.addBehavior(returnBehavior)
         }
         self.animator.addBehavior(self.tokenCollisionBehavior)
     }
@@ -171,6 +176,9 @@ class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
             self.animator.addBehavior(self.dragAttachmentBehavior)
         }
         else if panRecognizer.state == UIGestureRecognizerState.Ended {
+            
+            self.removeTransientBehaviors()
+           
             // apply the velocity of the pan so we can 'fling' the item
             // NOTE:
             //    velocity of the pan isn't always exactly zero when we
