@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PItchViewController: UIViewController {
+class PItchViewController: UIViewController, UIDynamicAnimatorDelegate {
 
     private lazy var animator: UIDynamicAnimator = self.initAnimator()
     private lazy var gravityBehavior: UIGravityBehavior = self.initGravityBehavior()
@@ -17,6 +17,8 @@ class PItchViewController: UIViewController {
     
     private var dragAttachmentBehavior: UIAttachmentBehavior? = nil
     private var dragStartingPoint: CGPoint = CGPointZero
+    
+    private var transientBehaviors = [UIDynamicBehavior()]
     
     private lazy var tokenViews: [TokenView] = {
             let tokenLabels = ["1", "2", "3", "4", "5", "6̲", "7", "8", "9̲", "10", "11"]
@@ -36,7 +38,9 @@ class PItchViewController: UIViewController {
 
     // lazy initialization for variables with with depenency on 'self'
     private func initAnimator() -> UIDynamicAnimator {
-        return UIDynamicAnimator(referenceView:self.view)
+        let animator = UIDynamicAnimator(referenceView:self.view)
+        animator.delegate = self
+        return animator
     }
     
     private func initGravityBehavior() -> UIGravityBehavior {
@@ -65,6 +69,13 @@ class PItchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addDynamicTokensToView()
+
+        // Gesture recognizer so we can reset the tokens
+        
+        let fieldTapRecognizer = UITapGestureRecognizer(target: self, action: "fieldTapped:")
+        fieldTapRecognizer.numberOfTapsRequired = 2
+        fieldTapRecognizer.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(fieldTapRecognizer)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -97,6 +108,18 @@ class PItchViewController: UIViewController {
         }
     }
     
+    // MARK: - UIDynamicAnimatorDelegate
+    
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+
+        println("Animator has paused")
+    
+        // When the animator comes to a rest, we may need
+        // to remove transient behaviors
+
+        self.removeTransientBehaviors()
+    }
+    
     //MARK: - Behaviors
     
     private func addInitialBehaviors() {
@@ -108,10 +131,28 @@ class PItchViewController: UIViewController {
     
     private func addCollectAtBottomBehaviors() {
         self.animator.addBehavior(self.gravityBehavior)
+        self.transientBehaviors.append(self.gravityBehavior)
         println("+ Added Gravity Behavior")
+        
         self.animator.addBehavior(self.fieldCollisionBehavior)
+        self.transientBehaviors.append(self.fieldCollisionBehavior)
         println("+ Added Collision Behavior")
     }
+    
+    func removeTransientBehaviors() {
+
+        if self.transientBehaviors.count == 0 { return }
+        
+        println("Removing Transient Behaviors")
+        
+        for behavior in self.transientBehaviors {
+            self.animator.removeBehavior(behavior)
+        }
+        
+        self.transientBehaviors.removeAll(keepCapacity: true)
+    }
+    
+    //MARK: - Actions
     
     func tokenDidPan(panRecognizer: UIPanGestureRecognizer)
     {
@@ -146,6 +187,12 @@ class PItchViewController: UIViewController {
                 dragAttachmentBehavior.anchorPoint = newPoint
             }
         }
+    }
+    
+    
+    func fieldTapped(recognizer: UITapGestureRecognizer) {
+        // Resest the tokens to the bottom
+        self.addCollectAtBottomBehaviors()
     }
     
     //MARK: - Debug
