@@ -12,6 +12,7 @@ class TokenView: UIView {
     
     let TokenViewDiameter = 75.0
     let dynamicBehavior = UIDynamicItemBehavior()
+    lazy var opacityItem: OpacityDynamicItem = self.initOpacityDynamicItem()
     
     private var textLabel = UILabel()
     private var primaryColor = UIColor.blackColor()
@@ -54,6 +55,10 @@ class TokenView: UIView {
         self.dynamicBehavior.angularResistance = 1.0
         self.dynamicBehavior.friction = 1.0
         self.dynamicBehavior.allowsRotation = true
+    }
+    
+    func initOpacityDynamicItem() -> OpacityDynamicItem {
+        return OpacityDynamicItem(view: self)
     }
 
     //MARK: - UIView

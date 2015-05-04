@@ -15,6 +15,7 @@ class ReturnToFieldBehavior: UIDynamicBehavior {
     
     private let snapToPoint: CGPoint
     private var snapToBottomBehavior: UISnapBehavior? = nil
+    private var pushOpacityBehavior: UIPushBehavior? = nil
     
     init(token: TokenView, snapToPoint: CGPoint) {
         self.token = token
@@ -56,16 +57,42 @@ class ReturnToFieldBehavior: UIDynamicBehavior {
                 snapToBottomBehavior.damping = 0.9
                 self.addChildBehavior(snapToBottomBehavior)
                 self.snapToBottomBehavior = snapToBottomBehavior
-            }
-            else if let snapToBottomBehavior = self.snapToBottomBehavior {
-                let itemVelocity = self.token.dynamicBehavior.linearVelocityForItem(self.token)
-                let magnitude = sqrt( (itemVelocity.x * itemVelocity.x) + (itemVelocity.y * itemVelocity.y) );
                 
-                if magnitude < 0.01 {
-                    self.removeChildBehavior(snapToBottomBehavior)
-                    self.snapToBottomBehavior = nil
-                }
+                // Drive the opacity of the item with the animator
+                self.token.alpha = 0.0
+                
+                let pushOpacityBehavior = UIPushBehavior(items: [self.token.opacityItem], mode: UIPushBehaviorMode.Instantaneous)
+                pushOpacityBehavior.magnitude = 2.0
+                
+                self.addChildBehavior(pushOpacityBehavior)
+                self.addChildBehavior(self.token.opacityItem.dynamicItemBehavior)
+                
+                self.pushOpacityBehavior = pushOpacityBehavior
             }
+            else {
+                
+                if let snapToBottomBehavior = self.snapToBottomBehavior {
+                    let itemVelocity = self.token.dynamicBehavior.linearVelocityForItem(self.token)
+                    let magnitude = sqrt( (itemVelocity.x * itemVelocity.x) + (itemVelocity.y * itemVelocity.y) );
+                    
+                    if magnitude < 0.01 {
+                        self.removeChildBehavior(snapToBottomBehavior)
+                        self.snapToBottomBehavior = nil
+                    }
+                }
+                
+                if let pushOpacityBehavior = self.pushOpacityBehavior {
+                    let opacityVelocty = self.token.opacityItem.dynamicItemBehavior.linearVelocityForItem(self.token.opacityItem)
+                    if let pushOpacityBehavior = self.pushOpacityBehavior where opacityVelocty.x < 0.01 {
+                        self.removeChildBehavior(pushOpacityBehavior)
+                        self.removeChildBehavior(self.token.opacityItem.dynamicItemBehavior)
+                        self.pushOpacityBehavior = nil
+                        self.token.alpha = 1.0
+                    }
+                }
+                
+            }
+            
         }
     }
 }
